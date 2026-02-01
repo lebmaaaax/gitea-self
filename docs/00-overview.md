@@ -93,7 +93,6 @@ gitea-selfhosted-lab/
 ├── docs/
 │   ├── 00-overview.md
 │   ├── 01-quick-start.md               # Быстрый старт (5 минут)
-│   ├── 02-detailed-install.md          # Подробная установка
 │   ├── 03-https-setup.md
 │   ├── 04-ci-cd-setup.md
 │   └── 05-troubleshooting.md
