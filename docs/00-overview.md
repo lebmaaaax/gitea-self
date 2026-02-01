@@ -55,5 +55,46 @@
 
 ## Эксплуатационные договоренности
 - Бэкапы: отдельно данные Gitea (volume), отдельно дампы PostgreSQL.
-- Обновления: фиксировать версии образов (не `latest`) и обновлять контролируемо.
+- Обновления: фиксировать версии образов и обновлять контролируемо.
 - Логи: смотреть через `docker compose logs` на VM1 и логи runner’ов на VM2.
+
+gitea-selfhosted-lab/
+├── README.md                          
+├── LICENSE
+├── .gitignore
+│
+├── vm1-gitea/                          # Всё для VM1 (Gitea+Postgres+Nginx)
+│   ├── docker-compose.yml
+│   ├── .env.example
+│   ├── nginx/
+│   │   ├── gitea.conf
+│   │   └── certs/.gitkeep
+│   └── README.md                       # Краткая инструкция для VM1
+│
+├── vm2-runner/                         # Всё для VM2 (act_runner)
+│   ├── docker-compose.yml              # Runner в контейнере
+│   ├── .env.example
+│   ├── config.yaml.example             # Конфиг runner (если нужен)
+│   ├── systemd/
+│   │   └── act_runner.service          # Альтернатива: systemd unit
+│   └── README.md                       # Краткая инструкция для VM2
+│
+├── scripts/
+│   ├── setup-vm1.sh                    # Автоматическая установка Docker на VM1
+│   ├── setup-vm2.sh                    # Автоматическая установка Docker на VM2
+│   ├── backup-gitea.sh
+│   ├── restore-gitea.sh
+│   └── healthcheck.sh
+│
+├── workflows-examples/                 # Примеры Gitea Actions workflows
+│   ├── build-and-push.yml
+│   ├── deploy-to-vm3.yml
+│   └── test-ci.yml
+│
+├── docs/
+│   ├── 00-overview.md
+│   ├── 01-quick-start.md               # Быстрый старт (5 минут)
+│   ├── 02-detailed-install.md          # Подробная установка
+│   ├── 03-https-setup.md
+│   ├── 04-ci-cd-setup.md
+│   └── 05-troubleshooting.md

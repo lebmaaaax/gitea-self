@@ -1,0 +1,36 @@
+services:
+  act-runner-1:
+    image: gitea/act_runner:latest
+    container_name: gitea-runner-1
+    restart: unless-stopped
+    environment:
+      GITEA_INSTANCE_URL: ${GITEA_INSTANCE_URL}
+      GITEA_RUNNER_REGISTRATION_TOKEN: ${GITEA_RUNNER_TOKEN}
+      GITEA_RUNNER_NAME: runner-1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - runner1_data:/data
+    networks:
+      - runner-net
+
+  act-runner-2:
+    image: gitea/act_runner:latest
+    container_name: gitea-runner-2
+    restart: unless-stopped
+    environment:
+      GITEA_INSTANCE_URL: ${GITEA_INSTANCE_URL}
+      GITEA_RUNNER_REGISTRATION_TOKEN: ${GITEA_RUNNER_TOKEN}
+      GITEA_RUNNER_NAME: runner-2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - runner2_data:/data
+    networks:
+      - runner-net
+
+volumes:
+  runner1_data:
+  runner2_data:
+
+networks:
+  runner-net:
+    driver: bridge
