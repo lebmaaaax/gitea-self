@@ -80,8 +80,7 @@ gitea-selfhosted-lab/
 │   └── README.md                       # Краткая инструкция для VM2
 │
 ├── scripts/
-│   ├── setup-vm1.sh                    # Автоматическая установка Docker на VM1
-│   ├── setup-vm2.sh                    # Автоматическая установка Docker на VM2
+│   ├── docker-vm1.sh                    # Автоматическая установка Docker на VM1
 │   ├── backup-gitea.sh
 │   ├── restore-gitea.sh
 │   └── healthcheck.sh
