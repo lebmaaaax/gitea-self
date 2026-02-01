@@ -1,0 +1,29 @@
+# env
+.env
+*.env
+!.env.example
+
+# SSL certificates
+*.crt
+*.key
+*.pem
+certs/*
+!certs/.gitkeep
+
+# Backups
+backups/
+*.sql
+*.tar.gz
+
+# Docker volumes (if using bind mounts)
+postgres_data/
+gitea_data/
+runner*_data/
+
+# Logs
+*.log
+
+# Temporary files
+*.swp
+*~
+.DS_Store
